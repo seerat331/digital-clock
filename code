@@ -1,0 +1,33 @@
+from tkinter import *
+from time import strftime
+
+root = Tk()
+root.title("Digital Clock ⏰")
+root.geometry("600x250")
+root.resizable(False, False)
+root.configure(bg="#0a0a0a")
+
+def time():
+    current_time = strftime("%H:%M:%S %p")
+    clock_label.config(text=current_time)
+    clock_label.after(1000, time) 
+
+def date():
+    current_date = strftime("%A, %B %d, %Y")
+    date_label.config(text=current_date)
+
+clock_label = Label(root,
+                    font=("ds-digital", 80, "bold"),
+                    background="#0a0a0a",
+                    foreground="#00ffff")
+clock_label.pack(pady=20)
+
+date_label = Label(root,
+                   font=("Arial", 20, "bold"),
+                   background="#0a0a0a",
+                   foreground="#ffffff")
+date_label.pack()
+time()
+date()
+
+root.mainloop()
